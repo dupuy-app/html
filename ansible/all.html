@@ -1,0 +1,129 @@
+<div class="markdown-heading"><h1 class="heading-element">Règles de codage Ansible</h1><a id="user-content-règles-de-codage-ansible" class="anchor" aria-label="Permalink: Règles de codage Ansible" href="#règles-de-codage-ansible"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h2 class="heading-element">Préambule :</h2><a id="user-content-préambule-" class="anchor" aria-label="Permalink: Préambule :" href="#préambule-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Ces règles sont valables pour les playbooks Ansible utilisés dans le contexte d'un déploiement d'applications. Pour
+d'autres contextes comme celui de l'exploitation d'applications, d'autres règles s'appliquent.</li>
+<li>Ce standard est à destination dʼune intelligence artificielle générative.</li>
+</ul>
+<div class="markdown-heading"><h2 class="heading-element">A) Sommaire</h2><a id="user-content-a-sommaire" class="anchor" aria-label="Permalink: A) Sommaire" href="#a-sommaire"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Préambule</li>
+<li>A) Sommaire</li>
+<li>B) Règles :
+<ul>
+<li>#1. Modules employés</li>
+<li>#2. Espace entre les tasks</li>
+<li>#3. Utilisation du module ansible.builtin.reboot</li>
+<li>#4. Utilisation du module ansible.builtin.template</li>
+<li>#5. Utilisation du module ansible.builtin.shell</li>
+<li>#6. Utilisation du module ansible.builtin.yum</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading"><h2 class="heading-element">B) Règles :</h2><a id="user-content-b-règles-" class="anchor" aria-label="Permalink: B) Règles :" href="#b-règles-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h3 class="heading-element">1) Modules employés</h3><a id="user-content-1-modules-employés" class="anchor" aria-label="Permalink: 1) Modules employés" href="#1-modules-employés"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">Pour les tasks, les modules utilisés sont parmi les suivants :</h4><a id="user-content-pour-les-tasks-les-modules-utilisés-sont-parmi-les-suivants-" class="anchor" aria-label="Permalink: Pour les tasks, les modules utilisés sont parmi les suivants :" href="#pour-les-tasks-les-modules-utilisés-sont-parmi-les-suivants-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Pour les déploiements sur Linux :
+<ul>
+<li>ansible.builtin.reboot</li>
+<li>ansible.builtin.shell</li>
+<li>ansible.builtin.template</li>
+<li>ansible.builtin.yum</li>
+</ul>
+</li>
+</ul>
+<br>
+<div class="markdown-heading"><h3 class="heading-element">2) Espace entre les tasks</h3><a id="user-content-2-espace-entre-les-tasks" class="anchor" aria-label="Permalink: 2) Espace entre les tasks" href="#2-espace-entre-les-tasks"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><br>
+Entre les tasks ou appels de rôles, mettre 4 lignes dʼespaces afin dʼavoir plus de visibilité
+<br>
+Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">parameters file</span>
+  <span class="pl-ent">ansible.builtin.template</span>:
+    <span class="pl-ent">src</span>: <span class="pl-s">templates/deployment/parameters.conf.j2</span>
+    <span class="pl-ent">dest</span>: <span class="pl-s">/local/usr/parameters.conf</span>
+
+
+
+
+- <span class="pl-ent">name</span>: <span class="pl-s">properties file</span>
+  <span class="pl-ent">ansible.builtin.template</span>:
+    <span class="pl-ent">src</span>: <span class="pl-s">files/deployment/properties.conf</span>
+    <span class="pl-ent">dest</span>: <span class="pl-s">/local/usr/properties.conf</span></pre></div>
+<br>
+<div class="markdown-heading"><h3 class="heading-element">3) Utilisation du module ansible.builtin.reboot</h3><a id="user-content-3-utilisation-du-module-ansiblebuiltinreboot" class="anchor" aria-label="Permalink: 3) Utilisation du module ansible.builtin.reboot" href="#3-utilisation-du-module-ansiblebuiltinreboot"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">Le module “ansible.builtin.reboot” est utilisé de la manière suivante :</h4><a id="user-content-le-module-ansiblebuiltinreboot-est-utilisé-de-la-manière-suivante-" class="anchor" aria-label="Permalink: Le module “ansible.builtin.reboot” est utilisé de la manière suivante :" href="#le-module-ansiblebuiltinreboot-est-utilisé-de-la-manière-suivante-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Aucun paramètre nʼest ajouté au module</li>
+</ul>
+<p>Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">reboot machine </span>
+  <span class="pl-ent">ansible.builtin.reboot</span>:</pre></div>
+<br>
+<div class="markdown-heading"><h3 class="heading-element">4) Utilisation du module ansible.builtin.template</h3><a id="user-content-4-utilisation-du-module-ansiblebuiltintemplate" class="anchor" aria-label="Permalink: 4) Utilisation du module ansible.builtin.template" href="#4-utilisation-du-module-ansiblebuiltintemplate"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">Le module “ansible.builtin.template” est utilisé de la manière suivante :</h4><a id="user-content-le-module-ansiblebuiltintemplate-est-utilisé-de-la-manière-suivante-" class="anchor" aria-label="Permalink: Le module “ansible.builtin.template” est utilisé de la manière suivante :" href="#le-module-ansiblebuiltintemplate-est-utilisé-de-la-manière-suivante-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Les paramètres utilisés sont exclusivement les suivants :
+<ul>
+<li>src</li>
+<li>dest</li>
+<li>backup</li>
+</ul>
+</li>
+<li>Les paramètres listés précédemment sont toujours définis et sont écrits dans cet ordre</li>
+<li>La valeur du paramètre “backup” est toujours à “true”.</li>
+<li>Le fichier source indiqué dans le paramètre “src” est un fichier se trouvant dans le dossier “templates” du projet git
+ou ses sous-dossiers.</li>
+</ul>
+<p>Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">config file</span>
+  <span class="pl-ent">ansible.builtin.template</span>:
+    <span class="pl-ent">src</span>: <span class="pl-s">templates/deployment/parameters.conf.j2</span>
+    <span class="pl-ent">dest</span>: <span class="pl-s">/local/usr/parameters.conf</span>
+    <span class="pl-ent">backup</span>: <span class="pl-c1">true</span></pre></div>
+<br>
+<div class="markdown-heading"><h3 class="heading-element">5) Utilisation du module ansible.builtin.shell</h3><a id="user-content-5-utilisation-du-module-ansiblebuiltinshell" class="anchor" aria-label="Permalink: 5) Utilisation du module ansible.builtin.shell" href="#5-utilisation-du-module-ansiblebuiltinshell"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">Le module “ansible.builtin.shell” est utilisé de la manière suivante :</h4><a id="user-content-le-module-ansiblebuiltinshell-est-utilisé-de-la-manière-suivante-" class="anchor" aria-label="Permalink: Le module “ansible.builtin.shell” est utilisé de la manière suivante :" href="#le-module-ansiblebuiltinshell-est-utilisé-de-la-manière-suivante-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Les paramètres utilisés sont exclusivement les suivants :
+<ul>
+<li>cmd</li>
+</ul>
+</li>
+<li>Les paramètres listés précédemment sont toujours définis et sont écrits dans cet ordre</li>
+</ul>
+<p>Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">launch of custom script</span>
+  <span class="pl-ent">ansible.builtin.shell</span>:
+    <span class="pl-ent">cmd</span>: <span class="pl-s"><span class="pl-pds">"</span>/local/usr/custom_script.sh<span class="pl-pds">"</span></span></pre></div>
+<br>
+<div class="markdown-heading"><h3 class="heading-element">6) Utilisation du module ansible.builtin.yum</h3><a id="user-content-6-utilisation-du-module-ansiblebuiltinyum" class="anchor" aria-label="Permalink: 6) Utilisation du module ansible.builtin.yum" href="#6-utilisation-du-module-ansiblebuiltinyum"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">Le module “ansible.builtin.yum” est utilisé de la manière suivante :</h4><a id="user-content-le-module-ansiblebuiltinyum-est-utilisé-de-la-manière-suivante-" class="anchor" aria-label="Permalink: Le module “ansible.builtin.yum” est utilisé de la manière suivante :" href="#le-module-ansiblebuiltinyum-est-utilisé-de-la-manière-suivante-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Les paramètres utilisés sont exclusivement les suivants :
+<ul>
+<li>state</li>
+<li>name</li>
+</ul>
+</li>
+<li>Les paramètres listés précédemment sont toujours définis et sont écrits dans cet ordre</li>
+<li>La valeur du paramètre “state” est toujours à “installed”.</li>
+<li>La valeur du paramètre “name” est toujours une liste, même quand il nʼy a seul quʼun package à installer. Cette liste est de la même forme que dans les exemples ci-après.</li>
+</ul>
+<p>Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">install libXau</span>
+  <span class="pl-ent">ansible.builtin.yum</span>:
+    <span class="pl-ent">state</span>: <span class="pl-s">installed</span>
+    <span class="pl-ent">name</span>:
+    - <span class="pl-s">libXau</span>
+
+
+
+
+- <span class="pl-ent">name</span>: <span class="pl-s">install libXext &amp; libXmu</span>
+  <span class="pl-ent">ansible.builtin.yum</span>:
+    <span class="pl-ent">state</span>: <span class="pl-s">installed</span>
+    <span class="pl-ent">name</span>:
+    - <span class="pl-s">libXext</span>
+    - <span class="pl-s">libXmu</span></pre></div>
