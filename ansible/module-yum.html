@@ -1,0 +1,30 @@
+<div class="markdown-heading"><h3 class="heading-element">6) Utilisation du module ansible.builtin.yum</h3><a id="user-content-6-utilisation-du-module-ansiblebuiltinyum" class="anchor" aria-label="Permalink: 6) Utilisation du module ansible.builtin.yum" href="#6-utilisation-du-module-ansiblebuiltinyum"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">Le module “ansible.builtin.yum” est utilisé de la manière suivante :</h4><a id="user-content-le-module-ansiblebuiltinyum-est-utilisé-de-la-manière-suivante-" class="anchor" aria-label="Permalink: Le module “ansible.builtin.yum” est utilisé de la manière suivante :" href="#le-module-ansiblebuiltinyum-est-utilisé-de-la-manière-suivante-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Les paramètres utilisés sont exclusivement les suivants :
+<ul>
+<li>state</li>
+<li>name</li>
+</ul>
+</li>
+<li>Les paramètres listés précédemment sont toujours définis et sont écrits dans cet ordre</li>
+<li>La valeur du paramètre “state” est toujours à “installed”.</li>
+<li>La valeur du paramètre “name” est toujours une liste, même quand il nʼy a seul quʼun package à installer. Cette liste est de la même forme que dans les exemples ci-après.</li>
+</ul>
+<p>Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">install libXau</span>
+  <span class="pl-ent">ansible.builtin.yum</span>:
+    <span class="pl-ent">state</span>: <span class="pl-s">installed</span>
+    <span class="pl-ent">name</span>:
+    - <span class="pl-s">libXau</span>
+
+
+
+
+- <span class="pl-ent">name</span>: <span class="pl-s">install libXext &amp; libXmu</span>
+  <span class="pl-ent">ansible.builtin.yum</span>:
+    <span class="pl-ent">state</span>: <span class="pl-s">installed</span>
+    <span class="pl-ent">name</span>:
+    - <span class="pl-s">libXext</span>
+    - <span class="pl-s">libXmu</span></pre></div>
+<br>
