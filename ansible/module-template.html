@@ -1,0 +1,22 @@
+<div class="markdown-heading"><h3 class="heading-element">4) Utilisation du module ansible.builtin.template</h3><a id="user-content-4-utilisation-du-module-ansiblebuiltintemplate" class="anchor" aria-label="Permalink: 4) Utilisation du module ansible.builtin.template" href="#4-utilisation-du-module-ansiblebuiltintemplate"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">Le module “ansible.builtin.template” est utilisé de la manière suivante :</h4><a id="user-content-le-module-ansiblebuiltintemplate-est-utilisé-de-la-manière-suivante-" class="anchor" aria-label="Permalink: Le module “ansible.builtin.template” est utilisé de la manière suivante :" href="#le-module-ansiblebuiltintemplate-est-utilisé-de-la-manière-suivante-"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Les paramètres utilisés sont exclusivement les suivants :
+<ul>
+<li>src</li>
+<li>dest</li>
+<li>backup</li>
+</ul>
+</li>
+<li>Les paramètres listés précédemment sont toujours définis et sont écrits dans cet ordre</li>
+<li>La valeur du paramètre “backup” est toujours à “true”.</li>
+<li>Le fichier source indiqué dans le paramètre “src” est un fichier se trouvant dans le dossier “templates” du projet git
+ou ses sous-dossiers.</li>
+</ul>
+<p>Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">config file</span>
+  <span class="pl-ent">ansible.builtin.template</span>:
+    <span class="pl-ent">src</span>: <span class="pl-s">templates/deployment/parameters.conf.j2</span>
+    <span class="pl-ent">dest</span>: <span class="pl-s">/local/usr/parameters.conf</span>
+    <span class="pl-ent">backup</span>: <span class="pl-c1">true</span></pre></div>
+<br>
