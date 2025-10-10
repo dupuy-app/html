@@ -1,0 +1,18 @@
+<div class="markdown-heading"><h3 class="heading-element">2) Espace entre les tasks</h3><a id="user-content-2-espace-entre-les-tasks" class="anchor" aria-label="Permalink: 2) Espace entre les tasks" href="#2-espace-entre-les-tasks"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><br>
+Entre les tasks ou appels de rôles, mettre 4 lignes dʼespaces afin dʼavoir plus de visibilité
+<br>
+Par exemple :</p>
+<div class="highlight highlight-source-yaml"><pre>- <span class="pl-ent">name</span>: <span class="pl-s">parameters file</span>
+  <span class="pl-ent">ansible.builtin.template</span>:
+    <span class="pl-ent">src</span>: <span class="pl-s">templates/deployment/parameters.conf.j2</span>
+    <span class="pl-ent">dest</span>: <span class="pl-s">/local/usr/parameters.conf</span>
+
+
+
+
+- <span class="pl-ent">name</span>: <span class="pl-s">properties file</span>
+  <span class="pl-ent">ansible.builtin.template</span>:
+    <span class="pl-ent">src</span>: <span class="pl-s">files/deployment/properties.conf</span>
+    <span class="pl-ent">dest</span>: <span class="pl-s">/local/usr/properties.conf</span></pre></div>
+<br>
